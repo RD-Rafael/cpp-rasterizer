@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "g++.exe build and debug main file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/out/main.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: g++.exe build main file",
+            "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}
