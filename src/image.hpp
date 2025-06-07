@@ -94,15 +94,14 @@ public:
             }
         }
 
-
-        for(int x = 0; x < width; x++){
-            for(int y = 0; y < height; y++) {
-                Vec2 point = { (float)x, (float)y };
-                if (is_point_inside_triangle(a, b, c, point)) {
-                    set(x, y, color);
-                }
-            }
-        }
+        // for(int x = 0; x < width; x++){
+        //     for(int y = 0; y < height; y++) {
+        //         Vec2 point = { (float)x, (float)y };
+        //         if (is_point_inside_triangle(a, b, c, point)) {
+        //             set(x, y, color);
+        //         }
+        //     }
+        // }
     }
 
     struct Iterator {   

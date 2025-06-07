@@ -3,16 +3,11 @@
 
 bool is_point_inside_triangle(Vec2 a, Vec2 b, Vec2 c, Vec2 point){
     bool s1, s2, s3;
+    s1 = (a - b).is_on_right_side(point - b);
+    s2 = (b - c).is_on_right_side(point - c);
+    s3 = (c - a).is_on_right_side(point - a);
 
-
-    std::cout << dot((a-b).right_vec(), point-b) << '\n';
-    std::cout << dot((b-c).right_vec(), point-c) << '\n';
-    std::cout << dot((c-a).right_vec(), point-a) << '\n';
-    s1 = dot((a-b).right_vec(), point-b) > 0;
-    s2 = dot((b-c).right_vec(), point-c) > 0;
-    s3 = dot((c-a).right_vec(), point-a) > 0;
-    return s1 == s2 && s2 == s3;
-
+    return (s1 == s2) && (s2 == s3);
 }
 
 struct BoundingBox {

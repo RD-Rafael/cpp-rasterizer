@@ -40,7 +40,7 @@ struct Vec2 {
     }
 
     friend Vec2 operator-(const Vec2 a, const Vec2& b) {
-        return {a.x - b.x, a.y - b.y};
+        return { a.x - b.x, a.y - b.y };
     }
 
     Vec2& operator*=(float k){
@@ -50,7 +50,7 @@ struct Vec2 {
     }
 
     friend Vec2 operator*(const Vec2& a, float k){
-        return {a.x*k, a.y*k};
+        return { a.x * k, a.y * k };
     }
     
     Vec2& operator/=(float k){
@@ -63,27 +63,27 @@ struct Vec2 {
         return {a.x/k, a.y/k};
     }
     
-    std::string str() {
-        std::stringstream ss;
-        ss << "Vec2(" << x << ", " << y << ")";
-        return ss.str();
-    }
-    
     float length() const {
         return std::sqrt(x*x + y*y); 
     }
     
-    Vec2 right_vec() const {
-        return { x, -y };
+    Vec2 perpendicular() const {
+        return { y, -x };
     }
 
-    Vec2 left_vec() const {
-        return { -x, y };
+    bool is_on_right_side(const Vec2& point) const {
+        return dot(perpendicular(), point) > 0;
     }
 };
 
 struct Vec3 {
     float x, y, z;
+    
+    std::string str() {
+        std::stringstream ss;
+        ss << "Vec3(" << x << ", " << y << ", " << z << ")";
+        return ss.str();
+    }
     
     Vec3& operator+=(Vec3 &other) {
         x += other.x;
@@ -128,19 +128,14 @@ struct Vec3 {
     friend Vec3 operator/(const Vec3& a, float k){
         return {a.x/k, a.y/k, a.z/k};
     }
-
-    operator Vec2() const {
-        return { x, y };
-    }
-
-    std::string str() {
-        std::stringstream ss;
-        ss << "Vec3(" << x << ", " << y << ", " << z << ")";
-        return ss.str();
-    }
+    
     
     float length() const {
         return std::sqrt(x*x + y*y + z*z);
+    }
+
+    operator Vec2() const {
+        return { x, y };
     }
 };
 
